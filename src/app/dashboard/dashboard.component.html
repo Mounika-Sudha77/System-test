@@ -1,0 +1,48 @@
+<div class="container">
+<div class="header">
+    <h2 class="welcome-message">Welcome {{ user.username || 'Guest' }}</h2>
+    <button (click)="logout()" class="logout-button">
+      <i class="fas fa-sign-out-alt"></i> Logout
+    </button>
+  </div>
+  <!-- Table to List Applications -->
+  <h3>Applications List</h3>
+  <table>
+    <tr>
+      <th><input type="checkbox" (change)="selectAll($event)" /></th>
+      <th>Name</th>
+      <th>Mobile</th>
+      <th>Email</th>
+      <th>Gender</th>
+      <th>Amount</th>
+      <th>Actions</th>
+    </tr>
+    <tr *ngFor="let application of applications; let i = index">
+      <td><input type="checkbox" [(ngModel)]="application.selected" /></td>
+      <td>{{ application.name }}</td>
+      <td>{{ application.mobile }}</td>
+      <td>{{ application.email }}</td>
+      <td>{{ application.gender }}</td>
+      <td>{{ application.amount }}</td>
+      <td>
+        <button (click)="editApplication(application.name, application.mobile, application.email, application.gender, application.amount)" class="btn-secondary"  aria-label="Edit">
+          <i class="fas fa-edit"></i>
+        </button>
+        <button (click)="deleteApplication(i)" class="btn-secondary"  aria-label="Delete">
+          <i class="fas fa-trash"></i>
+        </button>
+        <button (click)="downloadApplication(application)" class="btn-secondary"  aria-label="Download PDF">
+          <i class="fas fa-file-pdf"></i>
+        </button>
+      </td>
+    </tr>
+  </table>
+  <div class="button-container">
+  <button (click)="downloadSelectedAsExcel()" aria-label="Download Selected as Excel">
+    <i class="fas fa-file-excel"></i> Download Selected as Excel
+  </button>
+  <button (click)="add()" aria-label="Add New Application">
+    <i class="fas fa-plus"></i> Add New Application
+  </button>
+  </div>
+</div>

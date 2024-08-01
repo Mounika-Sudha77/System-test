@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+
+.toast-success-custom {
+  background: linear-gradient(to right, #56ab2f, #a8e063);
+  color: white;
+}
+
+.toast-error-custom {
+  background: linear-gradient(to right, #ff5f6d, #ffc371);
+  color: white;
+}
+body {
+  background: url("https://source.unsplash.com/featured/?gradient,abstract")
+    no-repeat center center fixed;
+  background-size: cover;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}

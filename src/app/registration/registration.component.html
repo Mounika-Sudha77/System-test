@@ -1,0 +1,131 @@
+<div class="registration-container">
+  <h2>Registration Form</h2>
+  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name" class="bold-label">Name</label>
+      <input id="name" formControlName="name" type="text" />
+      <div
+        *ngIf="formControls.name.invalid && formControls.name.touched"
+        class="error"
+      >
+        <div *ngIf="formControls.name.errors?.required">Name is required.</div>
+        <div *ngIf="formControls.name.errors?.minlength">
+          Name must be at least 2 characters long.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="mobile" class="bold-label">Mobile Number</label>
+      <input id="mobile" formControlName="mobile" type="text" />
+      <div
+        *ngIf="formControls.mobile.invalid && formControls.mobile.touched"
+        class="error"
+      >
+        <div *ngIf="formControls.mobile.errors?.required">
+          Mobile number is required.
+        </div>
+        <div *ngIf="formControls.mobile.errors?.pattern">
+          Invalid mobile number. Must be 10 digits.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email" class="bold-label">Email</label>
+      <input id="email" formControlName="email" type="email" />
+      <div
+        *ngIf="formControls.email.invalid && formControls.email.touched"
+        class="error"
+      >
+        <div *ngIf="formControls.email.errors?.required">
+          Email is required.
+        </div>
+        <div *ngIf="formControls.email.errors?.email">
+          Invalid email address.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="gender" class="bold-label">Gender</label>
+      <select id="gender" formControlName="gender">
+        <option value="">Select</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+      <div
+        *ngIf="formControls.gender.invalid && formControls.gender.touched"
+        class="error"
+      >
+        <div *ngIf="formControls.gender.errors?.required">
+          Gender is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="amount" class="bold-label">Application Amount</label>
+      <input id="amount" formControlName="amount" type="number" />
+      <div
+        *ngIf="formControls.amount.invalid && formControls.amount.touched"
+        class="error"
+      >
+        <div *ngIf="formControls.amount.errors?.required">
+          Application amount is required.
+        </div>
+        <div *ngIf="formControls.amount.errors?.min">
+          Amount must be at least 1.
+        </div>
+      </div>
+    </div>
+
+    <div class="file-group">
+      <div class="file-form-group">
+        <label for="profilePic" class="bold-label">Profile Picture</label>
+        <input
+          id="profilePic"
+          formControlName="profilePic"
+          type="file"
+          accept=".jpeg,.png"
+        />
+        <div
+          *ngIf="
+            formControls.profilePic.invalid && formControls.profilePic.touched
+          "
+          class="error"
+        >
+          <div *ngIf="formControls.profilePic.errors?.required">
+            Profile picture is required.
+          </div>
+        </div>
+      </div>
+
+      <div class="file-form-group">
+        <label for="markSheet" class="bold-label">Mark Sheet</label>
+        <input
+          id="markSheet"
+          formControlName="markSheet"
+          type="file"
+          accept=".jpeg,.jpg,.pdf"
+        />
+        <div
+          *ngIf="formControls.markSheet.invalid && formControls.markSheet.touched"
+          class="error"
+        >
+          <div *ngIf="formControls.markSheet.errors?.required">
+            Mark sheet is required.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="!registrationForm.valid">Register</button>
+  </form>
+
+  <div class="links">
+    <div>Already have an account? <a routerLink="/login">Login Here</a></div>
+   
+  </div>
+</div>
